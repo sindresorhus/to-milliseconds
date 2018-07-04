@@ -1,0 +1,41 @@
+{
+	"name": "@sindresorhus/to-milliseconds",
+	"version": "0.0.0",
+	"description": "Convert an object of time properties to milliseconds: `{seconds: 2}` → `2000`",
+	"license": "MIT",
+	"repository": "sindresorhus/to-milliseconds",
+	"author": {
+		"name": "Sindre Sorhus",
+		"email": "sindresorhus@gmail.com",
+		"url": "sindresorhus.com"
+	},
+	"engines": {
+		"node": ">=8"
+	},
+	"scripts": {
+		"test": "xo && ava"
+	},
+	"files": [
+		"index.js"
+	],
+	"keywords": [
+		"parse",
+		"object",
+		"properties",
+		"to",
+		"into",
+		"time",
+		"ms",
+		"milliseconds",
+		"microseconds",
+		"nanoseconds",
+		"duration",
+		"period",
+		"range",
+		"interval"
+	],
+	"devDependencies": {
+		"ava": "*",
+		"xo": "*"
+	}
+}

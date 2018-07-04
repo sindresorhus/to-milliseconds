@@ -1,6 +1,6 @@
 'use strict';
 
-const transformers = {
+const converters = {
 	days: value => value * 864e5,
 	hours: value => value * 36e5,
 	minutes: value => value * 6e4,
@@ -15,9 +15,9 @@ module.exports = object => Object.entries(object).reduce((ms, [key, value]) => {
 		throw new TypeError(`Expected a \`number\` for key \`${key}\`, got \`${value}\` (${typeof value})`);
 	}
 
-	if (!transformers[key]) {
+	if (!converters[key]) {
 		throw new Error('Unsupported time key');
 	}
 
-	return ms + transformers[key](value);
+	return ms + converters[key](value);
 }, 0);

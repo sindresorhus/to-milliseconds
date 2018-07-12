@@ -1,4 +1,3 @@
-'use strict'
 
 const unity = {
 	days: val => (val * 864e5),
@@ -10,12 +9,16 @@ const unity = {
 	nanoseconds: val => (val / 1e6)
 }
 
-module.exports = object => {
-	for (const [key, value] of Object.entries(object)) {
-		if (typeof value !== 'number') {
-			throw new TypeError(`Expected a \`number\` for key \`${key}\`, got \`${value}\` (${typeof value})`)
-		}
+const isNum = val => (typeof val === 'number')
 
-		return unity[key](value)
+const toMiliseconds = (object) => {
+	for (const [key, value] of Object.entries(object)) {
+		if (isNum(value)) {
+			return unity[key](value)
+		}
+		
+		throw new TypeError(`Expected a \`number\` for key \`${key}\`, got \`${value}\` (${typeof value})`)
 	}
 }
+
+module.exports = toMiliseconds

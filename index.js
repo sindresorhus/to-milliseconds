@@ -1,39 +1,24 @@
-'use strict';
 
-module.exports = object => {
-	let ms = 0;
+const unity = {
+  days: val => (val * 864e5),
+  hours: val => (val * 36e5),
+  minutes: val => (val * 6e4),
+  seconds: val => (val * 1e3),
+  milliseconds: val => (val),
+  microseconds: val => (val / 1e3),
+  nanoseconds: val => (val / 1e6)
+}
 
-	for (const [key, value] of Object.entries(object)) {
-		if (typeof value !== 'number') {
-			throw new TypeError(`Expected a \`number\` for key \`${key}\`, got \`${value}\` (${typeof value})`);
-		}
+const isNum = val => (typeof val === 'number')
 
-		switch (key) {
-			case 'days':
-				ms += value * 864e5;
-				break;
-			case 'hours':
-				ms += value * 36e5;
-				break;
-			case 'minutes':
-				ms += value * 6e4;
-				break;
-			case 'seconds':
-				ms += value * 1e3;
-				break;
-			case 'milliseconds':
-				ms += value;
-				break;
-			case 'microseconds':
-				ms += value / 1e3;
-				break;
-			case 'nanoseconds':
-				ms += value / 1e6;
-				break;
-			default:
-				throw new Error('Unsupported time key');
-		}
-	}
+const toMiliseconds = (object) => {
+  for (const [key, value] of Object.entries(object)) {
+    if (isNum(value)) {
+      return unity[key](value)
+    }
+		
+    throw new TypeError(`Expected a \`number\` for key \`${key}\`, got \`${value}\` (${typeof value})`)
+  }
+}
 
-	return ms;
-};
+module.exports = toMiliseconds

@@ -1,4 +1,4 @@
-export interface TimeSpec {
+export interface TimeDescriptor {
 	readonly days?: number;
 	readonly hours?: number;
 	readonly minutes?: number;
@@ -11,4 +11,4 @@ export interface TimeSpec {
 /**
 Convert an object of time properties to milliseconds: `{seconds: 2}` → `2000`.
 */
-export default function toMilliseconds(input: TimeSpec): number;
+export default function toMilliseconds(input: TimeDescriptor): number;

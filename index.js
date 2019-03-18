@@ -10,7 +10,7 @@ const converters = {
 	nanoseconds: value => value / 1e6
 };
 
-const toMilliseconds = object => Object.entries(object).reduce((ms, [key, value]) => {
+const toMilliseconds = object => Object.entries(object).reduce((milliseconds, [key, value]) => {
 	if (typeof value !== 'number') {
 		throw new TypeError(`Expected a \`number\` for key \`${key}\`, got \`${value}\` (${typeof value})`);
 	}
@@ -19,7 +19,7 @@ const toMilliseconds = object => Object.entries(object).reduce((ms, [key, value]
 		throw new Error('Unsupported time key');
 	}
 
-	return ms + converters[key](value);
+	return milliseconds + converters[key](value);
 }, 0);
 
 module.exports = toMilliseconds;

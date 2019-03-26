@@ -23,4 +23,5 @@ const toMilliseconds = object => Object.entries(object).reduce((milliseconds, [k
 }, 0);
 
 module.exports = toMilliseconds;
+// TODO: remove this for next major version
 module.exports.default = toMilliseconds;

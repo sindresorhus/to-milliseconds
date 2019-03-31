@@ -1,5 +1,5 @@
-import {expectType} from 'tsd-check';
-import toMilliseconds from '.';
+import {expectType} from 'tsd';
+import toMilliseconds = require('.');
 
 expectType<number>(toMilliseconds({days: 15}));
 expectType<number>(toMilliseconds({hours: 11}));

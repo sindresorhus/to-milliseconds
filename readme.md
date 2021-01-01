@@ -1,4 +1,4 @@
-# to-milliseconds [![Build Status](https://travis-ci.org/sindresorhus/to-milliseconds.svg?branch=master)](https://travis-ci.org/sindresorhus/to-milliseconds)
+# to-milliseconds
 
 > Convert an object of time properties to milliseconds: `{seconds: 2}` → `2000`
 

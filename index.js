@@ -1,5 +1,3 @@
-'use strict';
-
 const converters = {
 	days: value => value * 864e5,
 	hours: value => value * 36e5,
@@ -10,18 +8,22 @@ const converters = {
 	nanoseconds: value => value / 1e6
 };
 
-const toMilliseconds = object => Object.entries(object).reduce((milliseconds, [key, value]) => {
-	if (typeof value !== 'number') {
-		throw new TypeError(`Expected a \`number\` for key \`${key}\`, got \`${value}\` (${typeof value})`);
+export default function toMilliseconds(timeDescriptor) {
+	let totalMilliseconds = 0;
+
+	for (const [key, value] of Object.entries(timeDescriptor)) {
+		if (typeof value !== 'number') {
+			throw new TypeError(`Expected a \`number\` for key \`${key}\`, got \`${value}\` (${typeof value})`);
+		}
+
+		const converter = converters[key];
+
+		if (!converter) {
+			throw new Error(`Unsupported time key: ${key}`);
+		}
+
+		totalMilliseconds += converter(value);
 	}
 
-	if (!converters[key]) {
-		throw new Error('Unsupported time key');
-	}
-
-	return milliseconds + converters[key](value);
-}, 0);
-
-module.exports = toMilliseconds;
-// TODO: remove this for next major version
-module.exports.default = toMilliseconds;
+	return totalMilliseconds;
+}

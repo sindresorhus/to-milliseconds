@@ -2,18 +2,16 @@
 
 > Convert an object of time properties to milliseconds: `{seconds: 2}` → `2000`
 
-
 ## Install
 
 ```
 $ npm install @sindresorhus/to-milliseconds
 ```
 
-
 ## Usage
 
 ```js
-const toMilliseconds = require('@sindresorhus/to-milliseconds');
+import toMilliseconds from '@sindresorhus/to-milliseconds';
 
 toMilliseconds({
 	days: 15,
@@ -29,14 +27,13 @@ setTimeout(() => {
 }, toMilliseconds({minutes: 2}));
 ```
 
-
 ## API
 
-### toMilliseconds(input)
+### toMilliseconds(timeDescriptor)
 
-#### input
+#### timeDescriptor
 
-Type: `Object`
+Type: `object`
 
 Specify an object with any of the following properties:
 
@@ -48,13 +45,7 @@ Specify an object with any of the following properties:
 - `microseconds`
 - `nanoseconds`
 
-
 ## Related
 
 - [parse-ms](https://github.com/sindresorhus/parse-ms) - The inverse of this module
 - [pretty-ms](https://github.com/sindresorhus/pretty-ms) - Convert milliseconds to a human readable string
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)

@@ -1,5 +1,5 @@
 import test from 'ava';
-import toMilliseconds from '.';
+import toMilliseconds from './index.js';
 
 test('convert an object to milliseconds', t => {
 	t.deepEqual(
@@ -119,7 +119,7 @@ test('convert an object to milliseconds', t => {
 		(1000 * 60) + 500 + 0.345678
 	);
 
-	t.deepEqual(
+	t.is(
 		toMilliseconds({
 			days: 0,
 			hours: 0,
@@ -164,7 +164,9 @@ test('throws on unsupported key', t => {
 			foo: 1,
 			milliseconds: 400
 		});
-	}, /Unsupported time key/);
+	}, {
+		message: /Unsupported time key/
+	});
 });
 
 test('throws on non-number value', t => {
@@ -172,5 +174,7 @@ test('throws on non-number value', t => {
 		toMilliseconds({
 			milliseconds: true
 		});
-	}, /Expected a `number` for key `milliseconds`/);
+	}, {
+		message: /Expected a `number` for key `milliseconds`/
+	});
 });

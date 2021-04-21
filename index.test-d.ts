@@ -1,5 +1,5 @@
 import {expectType} from 'tsd';
-import toMilliseconds = require('.');
+import toMilliseconds from './index.js';
 
 expectType<number>(toMilliseconds({days: 15}));
 expectType<number>(toMilliseconds({hours: 11}));

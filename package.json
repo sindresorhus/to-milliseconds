@@ -1,6 +1,6 @@
 {
 	"name": "@sindresorhus/to-milliseconds",
-	"version": "1.2.0",
+	"version": "2.0.0",
 	"description": "Convert an object of time properties to milliseconds: `{seconds: 2}` → `2000`",
 	"license": "MIT",
 	"repository": "sindresorhus/to-milliseconds",
